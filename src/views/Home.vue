@@ -15,15 +15,15 @@
 import Vue from 'vue'
 import { Product }  from '../models/Product'
 import {Component} from "vue-property-decorator";
+import ProductService from "@/service/ProductService";
 
-@Component()
+@Component({})
 export default class Home extends Vue {
-    items: Product[] = [
-        {productNumber: 40, productName: 'Dickerson', standardCost: '10.00', listPrice: '20.00'},
-        {productNumber: 21, productName: 'Larsen', standardCost: '10.00', listPrice: '20.00'},
-        {productNumber: 89, productName: 'Geneva', standardCost: '10.00', listPrice: '20.00'},
-        {productNumber: 38, productName: 'Jami', standardCost: '10.00', listPrice: '20.00'}
-    ]
+    items: Product[] = []
+
+    private async mounted() {
+        this.items = (await ProductService.getAllProducts())
+    }
 }
 
 </script>
