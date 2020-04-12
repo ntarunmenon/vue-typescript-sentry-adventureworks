@@ -22,7 +22,7 @@ export default class Home extends Vue {
     items: Product[] = []
 
     private async mounted() {
-        this.items = (await ProductService.getAllProducts())
+        this.items = (await ProductService.getAllProducts()).slice(1,10)
     }
 }
 

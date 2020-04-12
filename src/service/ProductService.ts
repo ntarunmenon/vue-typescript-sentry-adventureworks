@@ -6,7 +6,7 @@ export default class ProductService {
     public static getAllProducts(): Promise<Product[]> {
         return axios.get('/products', {baseURL: 'http://localhost:8080/'})
             .then( response => {
-                return response.data
+                return response.data?._embedded?.products
             } )
     }
 }
